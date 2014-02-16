@@ -2,7 +2,7 @@ package com.winelandsoft.jeroglificos;
 
 import java.util.ArrayList;
 
-import android.gesture.GestureOverlayView;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.ActivityCompat;
@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,10 +20,15 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 
 	private DrawerLayout drawerLayout;
 	private ActionBarDrawerToggle drawerToggle;
-	public ListView left_drawer;
-	public ListDrawerAdapter listViewAdapter;
-	ArrayList<ListDrawerItem> items = new ArrayList<ListDrawerItem>();
-	GestureOverlayView gestureView;
+	public ListView leftDrawerList;
+	public ListDrawerAdapter listDrawerAdapter;
+	ArrayList<ListDrawerItem> leftDrawerItems = new ArrayList<ListDrawerItem>();
+	
+	ArrayList<Challenge> challenges = new ArrayList<Challenge>();
+	
+	public GridView gridViewChallenges;
+	public ListChallengesAdapter listChallengesAdapter;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +60,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		getSupportActionBar().setHomeButtonEnabled(true);
 		
 				
-		left_drawer = (ListView) findViewById(R.id.left_drawer);
+		leftDrawerList = (ListView) findViewById(R.id.leftDrawerList);
 						
 		ListDrawerItem i1 = new ListDrawerItem();
 		i1.id = "optionNuevo";
@@ -77,31 +83,118 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		i4.icon = R.drawable.ic_navigation_accept;
 		
 		
-		items.add(i1);
-		items.add(i2);
-		items.add(i3);
-		items.add(i4);
+		leftDrawerItems.add(i1);
+		leftDrawerItems.add(i2);
+		leftDrawerItems.add(i3);
+		leftDrawerItems.add(i4);
 
 		
-		listViewAdapter = new ListDrawerAdapter(this, items);
-		left_drawer.setAdapter(listViewAdapter);
+		listDrawerAdapter = new ListDrawerAdapter(this, leftDrawerItems);
+		leftDrawerList.setAdapter(listDrawerAdapter);
 		
-		listViewAdapter.notifyDataSetChanged();
+		listDrawerAdapter.notifyDataSetChanged();
 		
-		left_drawer.setOnItemClickListener(this);
+		leftDrawerList.setOnItemClickListener(this);
+
+		Challenge ch1 = new Challenge();
+		ch1.setId("1");
+		ch1.setTitle("País Caribeño");
+		ch1.setFavorite(true);
+		//ch1.setImageSrc(imageSrc)		
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
+		challenges.add(ch1);
 
 		
 		
+		
+		
+		gridViewChallenges = (GridView) findViewById(R.id.gridViewChallenges);
+		listChallengesAdapter = new ListChallengesAdapter(this, challenges);
+		gridViewChallenges.setAdapter(listChallengesAdapter);
+
+
+
+		/*gridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getApplicationContext(), ItemListadoFragment.class);
+				intent.putExtra("items", leftDrawerItems);
+				startActivity(intent);
+			}
+		});*/
+
+		
+	}
+	
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		drawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		drawerToggle.onConfigurationChanged(newConfig);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
 
-			if (drawerLayout.isDrawerOpen(left_drawer)) {
-				drawerLayout.closeDrawer(left_drawer);
+			if (drawerLayout.isDrawerOpen(leftDrawerList)) {
+				drawerLayout.closeDrawer(leftDrawerList);
 			} else {
-				drawerLayout.openDrawer(left_drawer);
+				drawerLayout.openDrawer(leftDrawerList);
 			}
 			return true;
 		}
@@ -110,19 +203,19 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 	}
 	
 	public void showOptions(View view) {
-		if (drawerLayout.isDrawerOpen(left_drawer)) {
-			drawerLayout.closeDrawer(left_drawer);
+		if (drawerLayout.isDrawerOpen(leftDrawerList)) {
+			drawerLayout.closeDrawer(leftDrawerList);
 		} else {
-			drawerLayout.openDrawer(left_drawer);
+			drawerLayout.openDrawer(leftDrawerList);
 		}return;
 	}
 	
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
 		
-		drawerLayout.closeDrawer(left_drawer); 
+		drawerLayout.closeDrawer(leftDrawerList); 
 		
-		final ListDrawerItem optionSelected = items.get(position);
+		final ListDrawerItem optionSelected = leftDrawerItems.get(position);
 		
 		Toast.makeText(parent.getContext(),optionSelected.id,Toast.LENGTH_SHORT).show();
 		

@@ -7,4 +7,11 @@
         </shape>
     </item>
 
+   
+     <item
+        android:left="0dp">
+        <shape>
+            <solid android:color="#eeeeee" />
+        </shape>
+    </item>
 </selector>
