@@ -19,7 +19,7 @@
             android:id="@+id/itemIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="11dp"
+            android:layout_marginRight="12dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/hello_world"
             android:gravity="center|center"
