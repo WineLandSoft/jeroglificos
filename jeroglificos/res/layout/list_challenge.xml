@@ -32,31 +32,17 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <RelativeLayout 
+        <ImageView
+            android:id="@+id/challengeImage"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
-
-            <ImageView
-                android:id="@+id/challengeImage"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/hello_world"
-                android:gravity="center|center"
-                android:maxHeight="65dp"
-                android:maxWidth="65dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/jeroglificos_test" />
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/ic_rating_favorite" />
-
-        </RelativeLayout>
+            android:layout_height="100dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/hello_world"
+            android:gravity="center|center"
+            android:maxHeight="65dp"
+            android:maxWidth="65dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/jeroglificos_test" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,7 +52,7 @@
 
             <ImageView
                 android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/hello_world"
                 android:gravity="center_vertical"
@@ -74,7 +60,7 @@
                 android:src="@drawable/ic_navigation_accept" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/challengeNumDone"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
@@ -82,26 +68,41 @@
 
             <ImageView
                 android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/hello_world"
                 android:gravity="center_vertical"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_rating_good" />
+                android:src="@drawable/ic_like" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/challengeNumLike"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="231" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:orientation="horizontal" >
-            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentRight="true" >
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_favorite"
+                         />
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 

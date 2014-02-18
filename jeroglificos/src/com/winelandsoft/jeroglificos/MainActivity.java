@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		ListDrawerItem i2 = new ListDrawerItem();
 		i2.id = "optionGrabar";
 		i2.title = "Favoritos";
-		i2.icon = R.drawable.ic_rating_favorite;
+		i2.icon = R.drawable.ic_favorite;
 		
 		ListDrawerItem i3 = new ListDrawerItem();
 		i3.id = "optionCompartir";
@@ -100,6 +100,8 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		ch1.setId("1");
 		ch1.setTitle("País Caribeño");
 		ch1.setFavorite(true);
+		ch1.setNumDone(2231);
+		ch1.setNumLike(998);
 		//ch1.setImageSrc(imageSrc)		
 		challenges.add(ch1);
 		challenges.add(ch1);

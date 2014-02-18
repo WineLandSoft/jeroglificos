@@ -7,8 +7,10 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,6 +24,8 @@ public class ListChallengesAdapter extends BaseAdapter {
 	private LayoutInflater _inflater;
 	private ArrayList<Challenge> _challenges = new ArrayList<Challenge>();
 	//private ImageLoader imageLoader;
+	
+	 private int mLastPosition = -1;
 
 	public ListChallengesAdapter(Context context, ArrayList<Challenge> challenges) {
 		this._context = context;
@@ -73,6 +77,9 @@ public class ListChallengesAdapter extends BaseAdapter {
 			//holderChallenge.challengeFavorite = (ImageView) view.findViewById(R.id.challengeFavorite);
 			//holderChallenge.challengeImage.setImageResource(R.drawable.jeroglificos_test);
 
+			holderChallenge.challengeNumDone = (TextView) view.findViewById(R.id.challengeNumDone);
+			holderChallenge.challengeNumLike = (TextView) view.findViewById(R.id.challengeNumLike);
+						
 			view.setTag(holderChallenge);	
 
 
@@ -83,6 +90,8 @@ public class ListChallengesAdapter extends BaseAdapter {
 
 
 		holderChallenge.challengeTitle.setText(challenge.getTitle());
+		holderChallenge.challengeNumDone.setText(""+challenge.getNumDone());
+		holderChallenge.challengeNumLike.setText(""+challenge.getNumLike());
 		if (itemPosition%2==0){
 			holderChallenge.challengeImage.setImageResource(R.drawable.jeroglificos_test);
 		}else{
@@ -98,6 +107,20 @@ public class ListChallengesAdapter extends BaseAdapter {
 		//LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(_context, R.anim.list_layout_controller);
 		//holderChallenge.challengeLayout.setLayoutAnimation(controller);
 
+		 // animate the item
+        TranslateAnimation animation = null;
+        if (itemPosition > mLastPosition) {
+            animation = new TranslateAnimation(
+                Animation.RELATIVE_TO_SELF,
+                0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
+                Animation.RELATIVE_TO_SELF, 1.0f,
+                Animation.RELATIVE_TO_SELF, 0.0f);
+
+            animation.setDuration(600);
+            view.startAnimation(animation);
+            mLastPosition = itemPosition;
+        }
+		
 		return view;
 
 	}
@@ -108,6 +131,8 @@ public class ListChallengesAdapter extends BaseAdapter {
 		//public NetworkImageView challengeImage;
 		public ImageView challengeImage;		
 		public TextView challengeTitle;
+		public TextView challengeNumDone;
+		public TextView challengeNumLike;
 		//public ImageView challengeFavorite;
 
 	}
