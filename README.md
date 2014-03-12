@@ -1,2 +1,8 @@
-jeroglificos
+Jeroglíficos
 ============
+
+
+Repository Structure
+====================
+
+* app/: Aplicación android
